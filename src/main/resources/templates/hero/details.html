@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .image {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hero Detail</h1>
+    <tbody>
+        <tr th:each="hero : ${heros}">
+            <td th:text="${heros.name}"></td>
+            <span> | </span>
+            <td th:text="${heros.description}"></td>
+            <span> | </span>
+            <td>
+                <img class="image" th:src="${heros.getThumbnail()}">
+            </td>
+        </tr>
+    </tbody>
+</body>
+</html>
