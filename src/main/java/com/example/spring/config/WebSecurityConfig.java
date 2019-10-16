@@ -21,7 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                Account account = accountRepository.findById(username).orElse(null);
+                Account account = accountRepository.findAccountByEmail(username);
                 if (account == null) {
                     throw new UsernameNotFoundException("Username not found");
                 }

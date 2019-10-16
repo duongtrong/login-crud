@@ -1,5 +1,6 @@
 package com.example.spring.entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,10 +12,19 @@ public class Account {
 
     @Id
     @Email
-    private String email;
-    private String password;
+    public String email;
+    public String name;
+    public String password;
 
     public Account() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {

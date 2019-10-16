@@ -1,37 +1,17 @@
 package com.example.spring.service;
 
 import com.example.spring.entity.Hero;
-import com.example.spring.repository.HeroRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class HeroService {
+public interface HeroService {
+    List<Hero> heroList();
 
-    @Autowired
-    HeroRepository heroRepository;
+    Hero getById(int id);
 
-    public List<Hero> heroList() {
-        return heroRepository.findAll();
-    }
+    Hero create(Hero hero);
 
-    public Hero getById(int id) {
-        return heroRepository.findById(id).orElse(null);
-    }
+    Hero update(Hero hero);
 
-    public Hero create(Hero hero) {
-        return heroRepository.save(hero);
-    }
-
-    public Hero update(Hero hero){
-        return heroRepository.save(hero);
-    }
-
-    public void delete(int id) {
-        heroRepository.deleteById(id);
-    }
-
-
+    void delete(int id);
 }
